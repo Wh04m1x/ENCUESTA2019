@@ -3,7 +3,7 @@
 // Incluimos el archivo de conexión a base de datos
 include ("../../conexion.php");
 
-$query = "SELECT * FROM encuestas WHERE estado = '1'";
+$query = "SELECT * FROM encuestas WHERE estado = 'Publico'";
 $resultado = $con->query($query);
 $tamaño = $resultado->num_rows;
 
@@ -26,6 +26,7 @@ $data = '
         </thead>';
 
 while ($row = $resultado->fetch_assoc()) {
+    $encuesta = base64_encode($row['id_encuesta']);
     $data .= '
         <tbody>
             <tr>
@@ -33,7 +34,7 @@ while ($row = $resultado->fetch_assoc()) {
                 <td>' . $row["descripcion"] . '</td>
                 <td>' . $row["fecha_final"] . '</td>
                 <td>
-                    <a class="btn btn-primary" href="encuesta/index.php?id_encuesta=' . $row['id_encuesta'] . '">Responder</a>
+                    <a class="btn btn-primary" href="encuesta?id_encuesta=' . $encuesta . '">Responder</a>
                 </td>
             </tr>
         </tbody>';

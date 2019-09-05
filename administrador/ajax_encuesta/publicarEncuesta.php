@@ -8,7 +8,7 @@ if (isset($_POST['id_encuesta']) && isset($_POST['id_encuesta']) != "") {
     $id_encuesta = $_POST['id_encuesta'];
 
     // Eliminar encuesta
-    $query = "UPDATE encuestas SET estado = '1' WHERE id_encuesta = '$id_encuesta'";
+    $query = "UPDATE encuestas SET estado = 'Publico' WHERE id_encuesta = '$id_encuesta'";
     $resultado = $con->query($query);
 
 }

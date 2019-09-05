@@ -5,7 +5,7 @@ for (var x = 0; x < 10; x++) {
 
 				c[x] = document.getElementsByClassName("tamaño")[x].value;
 
-				if (c[x] == 3) {
+				if (c[x] == 1) {
 			
 					var valor1 = document.getElementsByClassName("valor1")[x].value;
 					var valor2 = document.getElementsByClassName("valor2")[x].value;

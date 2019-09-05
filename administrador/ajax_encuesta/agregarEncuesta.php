@@ -15,8 +15,8 @@ if (isset($_POST['id_usuario']) && isset($_POST['titulo']) && isset($_POST['desc
     $descripcion = $_POST['descripcion'];
     $fecha_final = $_POST['fecha_final'];
 
-    $query = "INSERT INTO encuestas (id_usuario, titulo, descripcion, estado, fecha_inicio, fecha_final)
-              VALUES ('$id_usuario', '$titulo', '$descripcion', '0', '$fecha_inicio', '$fecha_final')";
+    $query = "INSERT INTO encuestas (id_usuario, titulo, descripcion, estado, fecha_final)
+              VALUES ('$id_usuario', '$titulo', '$descripcion', 'Sin cambios', '$fecha_final')";
 
     $resultado = $con->query($query);
 

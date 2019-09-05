@@ -55,7 +55,7 @@
 
 			<?php
 
-			if ($row10['estado'] == '1') {
+			if ($row10['estado'] == 'Publico') {
 			 	for ($i = 1; $i <= 100; $i++) {
 
 					if (isset($_POST[$i])) {

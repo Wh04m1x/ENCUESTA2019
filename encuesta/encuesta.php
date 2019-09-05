@@ -1,8 +1,8 @@
 <?php
 
-  	require "../../conexion.php";
-
-  	$id_encuesta = $_GET['id_encuesta'];
+  	require "../conexion.php";
+$enceusta = base64_decode($_GET['id_encuesta']);
+  	$id_encuesta = $enceusta;
  	$query2 = "SELECT * FROM preguntas WHERE id_encuesta = '$id_encuesta'";
   	$respuesta2 = $con->query($query2);
 
@@ -74,7 +74,7 @@
             </div>
 
             <!-- action="../../pdf/carta_responsiva.php"-->
-            <form class="form-horizontal msf" action="../gracias.php" method="Post" autocomplete="off">
+            <form class="form-horizontal msf" action="gracias.php" method="Post" autocomplete="off">
                 <div class="msf-header">
                     <div class="row">
                         <div class=" col-md-6 col-md-offset-3">
@@ -110,15 +110,15 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-3">
                                 <h4><?php echo "$i. " . $row2['titulo'] ?></h4>
-
+                                    
                                 <?php 
 			while (($row = $respuesta->fetch_assoc())) {
 
 		 ?>
                                 <div class="radio">
-                                    <label><input class="form-check-input" type="radio"
+                                    <label ><input class="form-check-input" type="radio"
                                             name="<?php echo $row['id_pregunta'] ?>"
-                                            value="<?php echo $row['id_opcion'] ?>" required="selecciona una opcion">
+                                            value="<?php echo $row['id_opcion'] ?>" required>
                                         <?php echo $row['valor'] ?></label>
                                 </div>
 
@@ -134,6 +134,7 @@
                         </div>
 
                     </div>
+                    
                     <?php
         }
         

@@ -1,19 +1,19 @@
 
 var c = new Array();
 
-for (var x = 0; x < 10; x++) {
+for (var x = 0; x < 100; x++) {
 
 				c[x] = document.getElementsByClassName("tamaño")[x].value;
 
-				if (c[x] == 1) {
+				if (c[x] == 2) {
 			
 					var valor1 = document.getElementsByClassName("valor1")[x].value;
 					var valor2 = document.getElementsByClassName("valor2")[x].value;
-					var valor3 = document.getElementsByClassName("valor3")[x].value;
+				
 
 					var titulo1 = document.getElementsByClassName("titulo1")[x].value;
 					var titulo2 = document.getElementsByClassName("titulo2")[x].value;
-					var titulo3 = document.getElementsByClassName("titulo3")[x].value;
+				
 
 					var oilCanvas = document.getElementsByClassName("oilChart")[x];
 
@@ -23,16 +23,14 @@ for (var x = 0; x < 10; x++) {
 					var oilData = {
 					    labels: [
 					        titulo1,
-					        titulo2,
-					        titulo3
+					        titulo2
 					    ],
 					    datasets: [
 					        {
-					            data: [valor1, valor2, valor3],
+					            data: [valor1, valor2],
 					            backgroundColor: [
 					                "#FF6384",
-					                "#567845",
-					                "#84FF63"
+					                "#567845"
 					            ]
 					        }]
 					};

@@ -39,7 +39,7 @@
       <div class="collapse navbar-collapse" id="navb">
         <ul class="navbar-nav mr-auto">
         </ul>
-        <form class="form-inline my-2 my-lg-0" style="color: #fff">
+        <form class="form-inline my-2 my-lg-0" style="color: #f56314">
         </form>
       </div>
   	</nav>
@@ -69,7 +69,7 @@
 		$resultados = $con->query($query);
 
 				/*TITULO*/
-		echo "<h3>" . $row2['titulo'] . "</h3>";
+		echo "<h3>-" . $row2['titulo'] . "</h3>";
 
 		$cantidades = array();
 		$titulos = array();
@@ -82,20 +82,20 @@
 			$i++;
 		}
 
-		$opciones = $i - 1;
+		$opciones = $i - 1 ;
 		for ($i = 1; $i <= $opciones; $i++) {
 
 		?>
 
-		<input type="hidden" class="<?php echo "valor$i" ?>" value="<?php echo $cantidades[$i] ?>">
-		<input type="hidden" class="<?php echo "titulo$i" ?>" value="<?php echo $titulos[$i] ?>">
+		<input type="text" class="<?php echo "valor$i" ?>" value="<?php echo $cantidades[$i] ?>"><label>1</label>
+		<input type="text" class="<?php echo "titulo$i" ?>" value="<?php echo $titulos[$i] ?>"><label>2</label>
 
 		<?php  
 		}/*95*/
 
 		 ?>
 
-		<input type="hidden" class="tamaño" value="<?php echo $opciones ?>">
+		<input type="text" class="tamaño" value="<?php echo $opciones ?>"><label>e</label>
 
 		<div class="container" style="width: 50%; margin: 0 auto; width: 400px;">		
 			<canvas class="oilChart" width="600" height="400"></canvas>

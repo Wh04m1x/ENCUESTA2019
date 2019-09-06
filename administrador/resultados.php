@@ -82,22 +82,22 @@
 			$i++;
 		}
 
-		$opciones = $i - 1 ;
+		$opciones = $i - 1;
 		for ($i = 1; $i <= $opciones; $i++) {
 
 		?>
 
-		<input type="text" class="<?php echo "valor$i" ?>" value="<?php echo $cantidades[$i] ?>"><label>1</label>
-		<input type="text" class="<?php echo "titulo$i" ?>" value="<?php echo $titulos[$i] ?>"><label>2</label>
+		<input type="hidden" class="<?php echo "valor$i" ?>" value="<?php echo $cantidades[$i] ?>">
+		<input type="hidden" class="<?php echo "titulo$i" ?>" value="<?php echo $titulos[$i] ?>">
 
 		<?php  
 		}/*95*/
 
 		 ?>
 
-		<input type="text" class="tamaño" value="<?php echo $opciones ?>"><label>e</label>
+		<input type="hidden" class="tamaño" value="<?php echo $opciones ?>">
 
-		<div class="container" style="width: 50%; margin: 0 auto; width: 400px;">		
+		<div class="container" style="width: 30%; margin: 0 auto; width: 400px;">		
 			<canvas class="oilChart" width="600" height="400"></canvas>
 		</div>
 
@@ -115,12 +115,6 @@
 
 	}
   	 ?>
-	<div class="container text-center" style="margin-bottom: 20px">
-		<a href="reporte.php" class="btn btn-primary" target="_blank">GENERAR REPORTE</a>
-		<!--
-		<a href="reporte2.php?id_encuesta=<?php echo $id_encuesta ?>" class="btn btn-primary" target="_blank">GENERAR REPORTE2</a>
-		-->
-	</div>
 
 
 

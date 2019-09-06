@@ -68,9 +68,18 @@
 
 						if ($row2 = $resultado2->fetch_assoc()) {
 							$id_opcion = $row2['id_opcion'];
+							$id_pregunta = $row2['id_pregunta'];
+							$id_opcion2 = $row2['id_opcion'];
+
+							///////////
+							$queryref = "SELECT id_opcion AS referente FROM opciones WHERE id_opcion = '$id_opcion2' and id_pregunta = '3'";
+							$resultadoref = $con->query($queryref);
+							$rowr = $resultadoref->fetch_assoc();
+							$area = $rowr['referente'];
+							//////
 							$valor = $row2['valor'];
-							$query3 = "INSERT INTO resultados (id_opcion, valor) 
-							VALUES ('$id_opcion', '$valor')";
+							$query3 = "INSERT INTO resultados (id_opcion, valor, area) 
+							VALUES ('$id_opcion', '$valor','$area')";
 							$resultado3 = $con->query($query3);
 							if ($resultado3) {
 							

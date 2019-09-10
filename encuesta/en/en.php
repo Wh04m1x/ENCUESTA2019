@@ -82,7 +82,7 @@
 					?>
 					<br>
 						<div class="">
-					   <h4><?php echo "$i. " . $row2['titulo'] ?></h4>
+					   <h5><?php echo "$i. " . $row2['titulo'] ?></h5>
 					   <br>
 				   <?php 
 					   while (($row = $respuesta->fetch_assoc())) {

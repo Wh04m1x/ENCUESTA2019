@@ -97,8 +97,8 @@
 						}
 
 						/////////////////////////////////////////////////////////////////////
-							$query3 = "INSERT INTO resultados (id_opcion, valor, area) 
-							VALUES ('$id_opcion', '$valor','$area')";
+							$query3 = "INSERT INTO resultados (id_opcion, valor, area, pregunta) 
+							VALUES ('$id_opcion', '$valor','$area', '$id_pregunta')";
 							$resultado3 = $con->query($query3);
 							if ($resultado3) {
 							

@@ -34,7 +34,7 @@ while ($row = $resultado->fetch_assoc()) {
                 <td>' . $row["descripcion"] . '</td>
                 <td>' . $row["fecha_final"] . '</td>
                 <td>
-                    <a class="btn btn-primary" href="encuesta?id_encuesta=' . $encuesta . '">Responder</a>
+                    <a class="btn btn-primary" href="en/en?id_encuesta=' . $encuesta . '">Responder</a>
                 </td>
             </tr>
         </tbody>';

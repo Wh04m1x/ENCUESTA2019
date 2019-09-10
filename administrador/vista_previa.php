@@ -48,7 +48,7 @@
       <div class="collapse navbar-collapse" id="navb">
         <ul class="navbar-nav mr-auto">
         </ul>
-        <form class="form-inline my-2 my-lg-0" style="color: #fff">
+        <form class="form-inline my-2 my-lg-0" >
           
 		 
         </form>

@@ -144,7 +144,7 @@ while ($row78 = $resultados78->fetch_assoc()) {
                                             <div
                                                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                 <h6 class="m-0 font-weight-bold text-success">
-                                                    <?php echo ''.$row78['valor']. $pregunta; ?></h6>
+                                                    <?php echo ''.$row78['valor']; ?></h6>
 
                                             </div>
                                             <!-- Card Body -->
@@ -177,7 +177,7 @@ while ($row78 = $resultados78->fetch_assoc()) {
                                                     ]);
 
                                                     var option5s = {
-                                                        title: 'My Daily Activities'
+                                                        title: '<?php echo $row7['titulo'].' '.$row78['valor']; ?>'
                                                     };
 
                                                     var chart = new google.visualization.PieChart(document

@@ -10,7 +10,7 @@
 
            <?php 
             include '../../conexion.php';
-			$query = "SELECT preguntas.id_pregunta, preguntas.titulo,COUNT('preguntas.titulo') as total, opciones.valor FROM opciones INNER JOIN preguntas ON opciones.id_pregunta=preguntas.id_pregunta INNER JOIN resultados ON opciones.id_opcion=resultados.id_opcion WHERE preguntas.id_pregunta = '4' and area ='LABORAL' GROUP BY opciones.valor ORDER BY preguntas.id_pregunta";
+			$query = "SELECT preguntas.id_pregunta, preguntas.titulo,COUNT('preguntas.titulo') as total, opciones.valor FROM opciones INNER JOIN preguntas ON opciones.id_pregunta=preguntas.id_pregunta INNER JOIN resultados ON opciones.id_opcion=resultados.id_opcion WHERE preguntas.id_pregunta = '4' and area ='SEGURIDAD E HIGIENE' GROUP BY opciones.valor ORDER BY preguntas.id_pregunta";
  
 			 $exec = mysqli_query($con,$query);
 			 while($row = mysqli_fetch_array($exec)){
@@ -21,14 +21,14 @@
         ]);
 
         var option5s = {
-          title: 'Motivo de tu visita en la area de Laboral:'
+          title: 'My Daily Activities'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechartL'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
 
         chart.draw(data2, option5s);
       }
     </script>
 
 
-<div id="piechartL" style="width: 900px; height: 500px;"></div>
+<div id="piechart3" style="width: 900px; height: 500px;"></div>

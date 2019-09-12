@@ -15,8 +15,7 @@ $row3 = $resultados3->fetch_assoc();
 	$resultadosc = $con->query($queryc);
   $rowc = $resultadosc->fetch_assoc();
   
-  $consulta2 = "SELECT comentarios FROM comentarios;";
-	$resultados22 = $con->query($consulta2);
+  
  ?>
 
 <!DOCTYPE html>
@@ -39,6 +38,26 @@ $row3 = $resultados3->fetch_assoc();
         rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/Chart.min.js"></script>
+    <script src="media/js/jquery.dataTables.min.js"></script>
+    <script src="media/js/dataTables.bootstrap.min.js"></script>          
+
+    <link rel="stylesheet" href="media/css/dataTables.bootstrap.min.css">
+    <script src="media/js/lenguajeusuario.js"></script>     
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+    });
+
+    $('body').on("click", ".view_activo", function(e) {
+		e.preventDefault();
+		dialog.dialog('open');
+	  });
+
+	  $('.view_activo').click(function(e) {
+		e.preventDefault();
+		dialog.dialog('open');
+	  });
+    </script> 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <style type="text/css">
@@ -110,25 +129,27 @@ $row3 = $resultados3->fetch_assoc();
 
                     <div class="row">
 
-                    <div class="col-xl-12 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-area">
-                   
-                  </div>
-                </div>
-              </div>
-            </div>
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Nivel de Atencion por area:</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                 <?php
+                 include 'NIVEL.php';
+                 ?>
+                                
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
-                </div>
-                        <?php
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
+                    </div>
+                    <?php
 
 $consulta = "SELECT * FROM preguntas WHERE id_encuesta = '$id_encuesta' AND ver = '0'";
 $resultados2 = $con->query($consulta);
@@ -136,38 +157,38 @@ $resultados2 = $con->query($consulta);
 		while ($row7 = $resultados2->fetch_assoc()) {
      $pregunta = $row7['id_pregunta'];
 ?>
-                        <!-- Area Chart -->
-                        <div class="col-xl-12 col-lg-7">
-                            <!-- Pie Chart -->
-                            <div class="col-xl-12 col-lg-5">
-                                <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div
-                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary"><?php echo $row7['titulo'] ?></h6>
+                    <!-- Area Chart -->
+                    <div class="col-xl-12 col-lg-7">
+                        <!-- Pie Chart -->
+                        <div class="col-xl-12 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary"><?php echo $row7['titulo'] ?></h6>
 
-                                    </div>
+                                </div>
 
 
-                                    <?php
+                                <?php
 $consulta78 = "SELECT distinct valor FROM resultados WHERE pregunta = '3'";
 $resultados78 = $con->query($consulta78);
 while ($row78 = $resultados78->fetch_assoc()) {
   $area = $row78['valor'];
 ?>
 
-                                    <!-- Pie Chart -->
-                                    <div class="col-xl-12 col-lg-5">
-                                        <div class="card shadow mb-4">
-                                            <!-- Card Header - Dropdown -->
-                                            <div
-                                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                <h6 class="m-0 font-weight-bold text-success">
-                                                    <?php echo ''.$row78['valor']; ?></h6>
+                                <!-- Pie Chart -->
+                                <div class="col-xl-12 col-lg-5">
+                                    <div class="card shadow mb-4">
+                                        <!-- Card Header - Dropdown -->
+                                        <div
+                                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                            <h6 class="m-0 font-weight-bold text-success">
+                                                <?php echo ''.$row78['valor']; ?></h6>
 
-                                            </div>
-                                            <!-- Card Body -->
-                                            <div class="card-body">
+                                        </div>
+                                        <!-- Card Body -->
+                                        <div class="card-body">
                                                 <!-- graficas-->
 
                                                 <script type="text/javascript">
@@ -175,101 +196,98 @@ while ($row78 = $resultados78->fetch_assoc()) {
                                                     'packages': ['corechart']
                                                 });
                                                 google.charts.setOnLoadCallback(drawChart);
-
                                                 function drawChart() {
-
                                                     var data2 = google.visualization.arrayToDataTable([
                                                         ['valor', 'total'],
-
                                                         <?php
                                                         include '../../conexion.php';
                                                         $query =
                                                         "SELECT preguntas.id_pregunta, preguntas.titulo,COUNT('preguntas.titulo') as total, opciones.valor FROM opciones INNER JOIN preguntas ON opciones.id_pregunta=preguntas.id_pregunta INNER JOIN resultados ON opciones.id_opcion=resultados.id_opcion WHERE preguntas.id_pregunta = '$pregunta' and area ='$area' GROUP BY opciones.valor ORDER BY preguntas.id_pregunta";
-
                                                         $exec = mysqli_query($con, $query);
                                                         while ($row = mysqli_fetch_array($exec)) {
-
                                                             echo "['".$row['valor'].
                                                             "',".$row['total'].
                                                             "],";
                                                         } ?>
                                                     ]);
-
                                                     var option5s = {
                                                         title: '<?php echo $row7['titulo'].' '.$row78['valor']; ?>'
                                                     };
-
                                                     var chart = new google.visualization.PieChart(document
                                                         .getElementById('piechart3<?php echo $area.'-'.$pregunta; ?>'));
-
                                                     chart.draw(data2, option5s);
                                                 }
                                                 </script>
-                                                <!-- end graficas-->
-                                                <div id="piechart3<?php echo $area.'-'.$pregunta; ?>" style="width: 900px; height: 500px;"></div>
-                                            </div>
-                                            <!-- -->
-
+                                            <!-- end graficas-->
+                                <div id="piechart3<?php echo $area.'-'.$pregunta; ?>" style="width: 800px; height: 500px;"></div>
                                         </div>
-                                    </div>
+                                        <!-- -->
 
-                                    <?php
+                                    </div>
+                                </div>
+
+                                <?php
 
 }
 ?>
-                                </div>
-
                             </div>
+
                         </div>
-                        <?php
+                    </div>
+                    <?php
 
     }
 ?>
 
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-
-                        <div class="col-xl-12 col-lg-7">
-
-                            <!-- Approach -->
-                            <div class="card shadow mb-10">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">COMENTARIOS</h6>
-                                </div>
-                                <div class="card-body">
-                                    <?php
-                  while ($row22 = $resultados22->fetch_assoc()) {
-                 echo ' <p>'.$row22['comentarios'].'</p>';
-                 
-                  }
-                  ?>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
-                <!-- /.container-fluid -->
+
+                <!-- Content Row -->
+                <div class="row">
+
+
+                    <div class="col-xl-12 col-lg-7">
+                        <div class="card shadow mb-10">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">COMENTARIOS</h6>
+                            </div>
+                 
+            
+
+<table style="white-space: nowrap" id="tabla" class="table table-striped table-bordered" >
+  <thead>
+  <tr>
+    <th>COMENTARIOS.</th>
+    <th>FECHA</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+                    
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>AGROS S.A DE C.V.</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->

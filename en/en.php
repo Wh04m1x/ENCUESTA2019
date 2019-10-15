@@ -20,7 +20,7 @@
 <!DOCTYPE html>
 <html lang="esp">
 <head>
-	<title>Contact V5</title>
+	<title>Encuesta</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -96,7 +96,7 @@
 				   <div class="row">
                             <div class="">
                                 <div class="form-group">
-                                    <h4>Por favor déjanos saber en que podemos mejorar nuestro servicio
+                                    <h4>Por favor déjanos saber en que podemos mejorar nuestro servicio: 
                                     </h4>
                                     <div class="">
                                         <textarea class="form-control" rows="10" name="text" id="text"

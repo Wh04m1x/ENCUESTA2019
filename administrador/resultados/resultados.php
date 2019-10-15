@@ -36,12 +36,11 @@ $row3 = $resultados3->fetch_assoc();
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/Chart.min.js"></script>
-    <script src="media/js/jquery.dataTables.min.js"></script>
-    <script src="media/js/dataTables.bootstrap.min.js"></script>          
+ 
 
-    <link rel="stylesheet" href="media/css/dataTables.bootstrap.min.css">
     <script src="media/js/lenguajeusuario.js"></script>     
     <script>
     $(document).ready(function(){
@@ -205,9 +204,7 @@ while ($row78 = $resultados78->fetch_assoc()) {
                                                         "SELECT preguntas.id_pregunta, preguntas.titulo,COUNT('preguntas.titulo') as total, opciones.valor FROM opciones INNER JOIN preguntas ON opciones.id_pregunta=preguntas.id_pregunta INNER JOIN resultados ON opciones.id_opcion=resultados.id_opcion WHERE preguntas.id_pregunta = '$pregunta' and area ='$area' GROUP BY opciones.valor ORDER BY preguntas.id_pregunta";
                                                         $exec = mysqli_query($con, $query);
                                                         while ($row = mysqli_fetch_array($exec)) {
-                                                            echo "['".$row['valor'].
-                                                            "',".$row['total'].
-                                                            "],";
+                                                            echo "['".$row['valor']."',".$row['total']. "],";
                                                         } ?>
                                                     ]);
                                                     var option5s = {
@@ -333,7 +330,8 @@ while ($row78 = $resultados78->fetch_assoc()) {
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-
+    <script src="media/js/jquery.dataTables.min.js"></script>
+    <script src="media/js/dataTables.bootstrap.min.js"></script>         
 </body>
 
 </html>
